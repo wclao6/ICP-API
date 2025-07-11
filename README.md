@@ -23,40 +23,48 @@
 
 # 使用方法
 
-python ICP-Checker.py 
+`python ICP-Checker.py `
 
 # web页面
 
-http://127.0.0.1:9527/buzhidaoa
+`http://127.0.0.1:9527/buzhidaoa`
 
 # 接口
 
 查询web（支持公司名、主域名、备案号）
-http://127.0.0.1:9527/queryweb/xxxxx
+
+`http://127.0.0.1:9527/queryweb/xxxxx`
 
 查询app（支持公司名、name、备案号）
-http://127.0.0.1:9527/queryapp/xxxxx
+
+`http://127.0.0.1:9527/queryapp/xxxxx`
 
 查询小程序（支持公司名、name、备案号）
-http://127.0.0.1:9527/queryweb/xxxxx
+
+`http://127.0.0.1:9527/queryweb/xxxxx`
 
 # 说明
 
 ⚠ 项目仅用于学习交流，不可用于商业及非法用途。
 
-⚠ 此项目是基于https://github.com/openeasm/ICP-API
+⚠ 此项目是基于`https://github.com/openeasm/ICP-API`
 分支的魔改
 
 # 依赖
 
 建议使用
-python3.10版本
+
+`python3.10版本`
+
 
 永久配置清华镜像源
-pip config set global.index-url  https://pypi.tuna.tsinghua.edu.cn/simple
+
+`pip config set global.index-url  https://pypi.tuna.tsinghua.edu.cn/simple`
+
 
 安装依赖包
-pip install -r requirements.txt
+
+`pip install -r requirements.txt`
 
 
 
