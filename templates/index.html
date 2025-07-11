@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>启动</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> 
+</head>
+<body>
+    <div class="container">
+        <!-- 页眉 -->
+        <header>
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>ICP备案查询系统</h1>
+                    <p>woclao6私人倾情打造 | icp非人验证码识别有概率失败，对于单个查询会循环识别20次直到成功</p>
+                    <p>只需等待1-20秒还是能出结果的 | 成功的凭证有10秒能复用这时候查询秒出结果</p>
+                </div>
+            </div>
+            <div class="datetime">
+                <div class="date">2025年7月4日 星期五 · 乙巳蛇年六月初十</div>
+                <div class="time">23:12:00</div>
+            </div>
+        </header>
+        
+        <!-- 主内容区 -->
+        <main>
+            <section class="hero">
+                <h2>ICP备案信息查询平台</h2>
+                <p>提供网站、APP、小程序一站式备案信息查询服务，实时获取权威备案数据</p>
+            </section>             
+            <!-- API卡片区域 -->
+            <div class="dashboard">
+                <!-- 网站备案查询 -->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-globe-asia"></i>
+                        <h3>网站备案查询</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="endpoint">
+                            <span class="method">GET</span>
+                            <span class="url">/queryweb/&lt;公司名、主域名、备案号&gt;</span>
+                            <div class="desc">返回网站备案信息的JSON数据</div>
+                        </div>
+                        <div class="query-box">
+                            <input type="text" class="query-input" id="web-input" placeholder="输入公司名、域名或备案号">
+                            <!-- 网站备案查询按钮 -->
+                            <button class="query-btn web" onclick="queryAPI('web')" id="web-btn">
+                                <i class="fas fa-search"></i> 查询网站备案 
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- APP备案查询 -->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>APP备案查询</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="endpoint">
+                            <span class="method">GET</span>
+                            <span class="url">/queryapp/&lt;公司名、APP名、备案号&gt;</span>
+                            <div class="desc">返回APP备案信息的JSON数据</div>
+                        </div>
+                        <div class="query-box">
+                            <input type="text" class="query-input" id="app-input" placeholder="输入公司名、APP名称或备案号">
+                            <!-- APP备案查询按钮 -->
+                            <button class="query-btn app" onclick="queryAPI('app')" id="app-btn">
+                                <i class="fas fa-search"></i> 查询APP备案 
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 小程序备案查询 -->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fab fa-weixin"></i>
+                        <h3>小程序备案查询</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="endpoint">
+                            <span class="method">GET</span>
+                            <span class="url">/querywx/&lt;公司名、小程序名、备案号&gt;</span>
+                            <div class="desc">返回小程序备案信息的JSON数据</div>
+                        </div>
+                        <div class="query-box">
+                            <input type="text" class="query-input" id="wx-input" placeholder="输入公司名、小程序名称或备案号">
+                            <!-- 小程序备案查询按钮 -->
+                            <button class="query-btn wx" onclick="queryAPI('wx')" id="wx-btn">
+                                <i class="fas fa-search"></i> 查询小程序备案 
+                            </button>                             
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 统一响应区域 -->
+            <div class="response-container">
+                <div class="response-header">
+                    <div class="response-title">
+                        <i class="fas fa-code"></i>
+                        <h3>API 响应结果</h3>
+                    </div>
+                    <div class="response-controls">
+                        <button class="control-btn" onclick="clearResponse()">
+                            <i class="fas fa-trash-alt"></i> 清除 
+                        </button>
+                        <button class="control-btn" onclick="copyResponse()">
+                            <i class="fas fa-copy"></i> 复制 
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="code-block" id="response">
+                    <span class="code-comment"># 响应结果将在此处显示</span><br>
+                    <pre class="response-json">{"status": "等待查询...", "message": "请使用上方的查询功能获取备案信息"}</pre>
+                </div>
+            </div>
+        </main>
+ 
+        <!-- 页脚部分 -->
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h4>关于系统</h4>
+                        <p>wclao6魔改版</p>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>快速链接</h4>
+                        <ul class="footer-links">
+                            <li><a href="#"><i class="fas fa-chevron-right"></i> 虚位以待</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>技术支持</h4>
+                        <ul class="footer-links">
+                            <li><a href="#"><i class="fas fa-phone-alt"></i> 服务热线: 10086</a></li>
+                            <li><a href="#"><i class="fas fa-envelope"></i> 邮箱: admin@10086.cn</a></li>   
+                            <li><a href="#"><i class="fas fa-map-marker-alt"></i> 蓝星幼儿园</a></li>
+                        </ul>
+                    </div>
+                </div>              
+                <div class="footer-bottom">
+                    <p>© 2015-2025 不正常人类研究中心 星ICP备2025000000号-1 | 主管单位：滑稽</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script> 
+</body>
+</html>
