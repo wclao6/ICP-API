@@ -1,4 +1,4 @@
-# ICP-Checker（魔改版）
+# ICP-Checker（二开）
 
 一个简单的API，用于查询网站或企业的ICP备案信息。
 
@@ -47,7 +47,7 @@
 
 ⚠ 项目仅用于学习交流，不可用于商业及非法用途。
 
-⚠ 此项目是基于`https://github.com/openeasm/ICP-API`的魔改二开
+⚠ 此项目是基于`https://github.com/openeasm/ICP-API`的二开
 
 # 依赖
 
