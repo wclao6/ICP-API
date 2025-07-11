@@ -28,6 +28,7 @@
 # web页面
 
 `http://127.0.0.1:9527/buzhidaoa`
+<img width="2560" height="1521" alt="image" src="https://github.com/user-attachments/assets/598b2bed-34da-447c-9d75-be116a08ac76" />
 
 # 接口
 
