@@ -47,8 +47,7 @@
 
 ⚠ 项目仅用于学习交流，不可用于商业及非法用途。
 
-⚠ 此项目是基于`https://github.com/openeasm/ICP-API`
-分支的魔改
+⚠ 此项目是基于`https://github.com/openeasm/ICP-API`的魔改二开
 
 # 依赖
 
